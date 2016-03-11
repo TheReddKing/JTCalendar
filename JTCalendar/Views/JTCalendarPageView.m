@@ -119,7 +119,6 @@
         weekView.hidden = YES;
     }
 }
-
 - (void)layoutSubviews
 {    
     if(!_weeksViews){
@@ -133,15 +132,19 @@
         CGFloat weekDayHeight = _weekDayView.frame.size.height; // Force use default height
         
         if(weekDayHeight == 0){ // Or use the same height than weeksViews
-            weekDayHeight = self.frame.size.height / (_numberOfWeeksDisplayed);
+            weekDayHeight = self.frame.size.height / (_numberOfWeeksDisplayed + 1);
         }
-        
+        if(_manager.settings.weekModeEnabled) {
+            weekDayHeight = 15;
+        } else {
+            weekDayHeight = self.frame.size.height / (_numberOfWeeksDisplayed + 1);
+        }
         _weekDayView.frame = CGRectMake(0, 0, weekWidth, weekDayHeight);
         y = weekDayHeight;
     }
     
     CGFloat weekHeight = (self.frame.size.height - y) / _numberOfWeeksDisplayed;
-    weekHeight -= 20;
+    
     for(UIView *weekView in _weeksViews){
         weekView.frame = CGRectMake(0, y, weekWidth, weekHeight);
         y += weekHeight;
