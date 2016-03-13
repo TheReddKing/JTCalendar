@@ -40,7 +40,8 @@
     self.clipsToBounds = YES;
     
     _circleRatio = .9;
-    _dotRatio = 2. / 9.;
+    _dotRatio = 1. / 9.;
+    _isRectangle = false;
     
     {
         _circleView = [UIView new];
@@ -98,11 +99,11 @@
     _circleView.center = CGPointMake(self.frame.size.width / 2., self.frame.size.height / 2.);
     _circleView.layer.cornerRadius = sizeCircle / 2.;
     if (_isRectangle) {
-        _dotView.frame = CGRectMake(0, 0, self.frame.size.width, sizeDot);
-        _dotView.center = CGPointMake(self.frame.size.width / 2., self.frame.size.height - sizeDot);
+        _dotView.frame = CGRectMake(sizeDot*.2, 0, self.frame.size.width - sizeDot*.4, sizeDot);
+        _dotView.center = CGPointMake(self.frame.size.width / 2., self.frame.size.height - sizeDot*.5);
     } else {
         _dotView.frame = CGRectMake(0, 0, sizeDot, sizeDot);
-        _dotView.center = CGPointMake(self.frame.size.width / 2., (self.frame.size.height / 2.) +sizeDot * 2.5);
+        _dotView.center = CGPointMake(self.frame.size.width / 2., (self.frame.size.height / 2.) + sizeDot * 2.5);
         _dotView.layer.cornerRadius = sizeDot / 2.;
     }
 }
