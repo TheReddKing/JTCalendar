@@ -21,6 +21,7 @@
 
 @property (nonatomic) CGFloat circleRatio;
 @property (nonatomic) CGFloat dotRatio;
+@property (nonatomic) BOOL isRectangle;
 
 @property (nonatomic) BOOL isFromAnotherMonth;
 
